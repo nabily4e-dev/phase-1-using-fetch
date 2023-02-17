@@ -2,9 +2,9 @@
 
 ## Learning Goals
 
-- Explain how to fetch data with `fetch()`
-- Working around backwards compatibility issues
-- Identify examples of the AJAX technique on popular websites
+-   Explain how to fetch data with `fetch()`
+-   Working around backwards compatibility issues
+-   Identify examples of the AJAX technique on popular websites
 
 ## Introduction
 
@@ -31,11 +31,11 @@ In AJAX we:
 
 AJAX relies on several technologies:
 
-- Things called `Promise`s
-- Things called `XMLHttpRequestObject`s
-- A [serialization format][sf] called JSON for "JavaScript Object Notation"
-- [asynchronous Input / Output][asyncio]
-- [the event loop][el]
+-   Things called `Promise`s
+-   Things called `XMLHttpRequestObject`s
+-   A [serialization format][sf] called JSON for "JavaScript Object Notation"
+-   [asynchronous Input / Output][asyncio]
+-   [the event loop][el]
 
 Part of what makes AJAX complicated to learn is that to understand it
 _thoroughly_, you need to understand _all_ these components. For the moment,
@@ -59,12 +59,12 @@ like below:
 
 ```js
 fetch("string representing a URL to a data source")
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    // Use the data from the response to do DOM manipulation
-  });
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        // Use the data from the response to do DOM manipulation
+    });
 ```
 
 Now let's add some multi-line (`/*...*/`) comments (which JavaScript will
@@ -78,7 +78,7 @@ ignore) to describe what's happening:
   later.)
 */
 fetch("string representing a URL to a data source")
-  /*
+    /*
     Next, we call the `then()` method on the Promise object returned by calling
     `fetch()`. `then()` takes one argument: a callback function. 
     (More on Promises later!)
@@ -96,18 +96,18 @@ fetch("string representing a URL to a data source")
     This first callback function is usually only one line: returning the 
     content from the response after converting it into the format we need.
   */
-  .then(function (response) {
-    return response.json();
-  })
-  /*
+    .then(function (response) {
+        return response.json();
+    })
+    /*
     This time, the `then()` method is receiving the object that we returned from the
     first call to `then()` (our parsed JSON object). We capture the object in the
     parameter `data` and pass it into a second callback function, where we will
     write code to do DOM manipulation using the data returned from the server
   */
-  .then(function (data) {
-    // Use the actual data to do DOM manipulation
-  });
+    .then(function (data) {
+        // Use the actual data to do DOM manipulation
+    });
 ```
 
 > **Top Tip:** As always, we can name the parameters being used in our callback
@@ -148,9 +148,9 @@ The final `then()` is when you actually get some data (the parsed object
 returned from the first `then()`) passed in. You can then do something with that
 data. The easiest options are:
 
-- `alert()` the data
-- `console.log()` the data
-- hand the data off to another function.
+-   `alert()` the data
+-   `console.log()` the data
+-   hand the data off to another function.
 
 We'll go for the `console.log()` approach:
 
@@ -167,13 +167,13 @@ Here's a completed example:
 
 ```js
 fetch("http://api.open-notify.org/astros.json")
-  .then(function (response) {
-    console.log(response);
-    return response.json();
-  })
-  .then(function (data) {
-    console.log(data);
-  });
+    .then(function (response) {
+        console.log(response);
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data);
+    });
 ```
 
 Let's perform a demonstration. Navigate to
@@ -185,13 +185,13 @@ Open up DevTools and paste the following into the console:
 
 ```js
 fetch("http://api.open-notify.org/astros.json")
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    console.log(data);
-    console.log(`Holy cow! There are ${data["number"]} humans in space.`);
-  });
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data);
+        console.log(`Holy cow! There are ${data["number"]} humans in space.`);
+    });
 ```
 
 ![Simple fetch()](https://curriculum-content.s3.amazonaws.com/skills-front-end-web-development/js-async-fetch-readme/simple_fetch_incog_window.png)
@@ -212,15 +212,15 @@ topics.
 
 The AJAX technique opens up a lot of uses!
 
-- It allows us to pull in dynamic content. The same "framing" HTML page remains
-  on screen for a cooking website. The recipe on display updates _without_ page
-  load. This approach was pioneered by GMail whose nav area is swapped for mail
-  content swiftly — thanks to AJAX.
-- It allows us to get data from multiple sources. We could make a website that
-  displays the current weather forecast and the current price of bitcoin side by
-  side! This approach is used by most sites to render ads. Your content loads
-  while JavaScript gets the ad to show and injects it into your page (sometimes
-  AJAX can be used in a way that we don't _entirely_ like).
+-   It allows us to pull in dynamic content. The same "framing" HTML page remains
+    on screen for a cooking website. The recipe on display updates _without_ page
+    load. This approach was pioneered by GMail whose nav area is swapped for mail
+    content swiftly — thanks to AJAX.
+-   It allows us to get data from multiple sources. We could make a website that
+    displays the current weather forecast and the current price of bitcoin side by
+    side! This approach is used by most sites to render ads. Your content loads
+    while JavaScript gets the ad to show and injects it into your page (sometimes
+    AJAX can be used in a way that we don't _entirely_ like).
 
 ## Conclusion
 
@@ -236,9 +236,8 @@ is the future.
 
 ## Resources
 
-- [MDN Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+-   [MDN Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 
 [sf]: https://en.wikipedia.org/wiki/Serialization
-[asyncio]:
-  https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Introducing
+[asyncio]: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Introducing
 [el]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop
